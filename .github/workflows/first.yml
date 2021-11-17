@@ -3,17 +3,8 @@ name: first
 on: push
 
 jobs:
-    job1:
-        needs: job2
-        name: First job
-        runs-on: buntu-latest
-        steps:
-        - name: Step one
-          uses: actions/checkout@v2
-        - name: Step two
-          run: env | sort
 
-    job2:
+    job1:
         name: Second Job
         runs-on: windows-latest
         steps:
@@ -21,3 +12,12 @@ jobs:
           uses: actions/checkout@v2
         - name: Step two
           run: "Get-ChildItem Env: | Sort-Object Name"
+    job2:
+        needs: job1
+        name: First job
+        runs-on: buntu-latest
+        steps:
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: env | sort
