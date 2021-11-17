@@ -4,6 +4,7 @@ on: push
 
 jobs:
     job1:
+        needs: job2
         name: First job
         runs-on: buntu-latest
         steps:
